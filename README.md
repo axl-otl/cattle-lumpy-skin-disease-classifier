@@ -1,0 +1,1 @@
+https://www.kaggle.com/datasets/kaushalrimal619/lumpy-skin-disease-cow-images
