@@ -7,8 +7,6 @@ from tensorflow.keras.preprocessing import image
 def load_trained_model():
     return load_model("cattle_resnet_lsd_model.h5")
 
-model = load_trained_model()
-
 class_names = ["infected", "normal"]
 
 st.title("Lumpy Skin Disease Classifier")
@@ -19,7 +17,8 @@ with col1:
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
 with col2:
     if uploaded_file is not None:
-        with st.spinner("Classifying..."):
+        with st.spinner("Loading model and classifying..."):
+            model = load_trained_model()  # loads here, not at startup
             img = image.load_img(uploaded_file, target_size=(224, 224))
             img_array = image.img_to_array(img) / 255.0
             img_array = np.expand_dims(img_array, axis=0)
