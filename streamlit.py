@@ -1,10 +1,11 @@
 import streamlit as st
 import numpy as np
+import os
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
 CLASS_NAMES = ["LSD_Infected", "Healthy"]
-MODEL_PATH = "cattle_resnet_lsd_model.keras"
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "cattle_resnet_lsd_model.keras")
 
 @st.cache_resource
 def load_trained_model():
